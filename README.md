@@ -19,3 +19,8 @@ pip install streamlit gradio opencv-python
 ```
 streamlit run app.py
 ```
+
+## Run Gradio App
+```
+python app.py
+```
