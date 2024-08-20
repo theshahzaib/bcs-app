@@ -69,6 +69,23 @@ st.title("Construction Stages Monitoring")
 img1 = st.file_uploader("Upload Before Image", type=["jpg", "png", "tif"], help='Upload image files equal in dimentions')
 img2 = st.file_uploader("Upload After Image", type=["jpg", "png", "tif"])
 
+# Display images
+if img1 and img2:
+    img1_bytes = img1.read()
+    img2_bytes = img2.read()
+
+    img1 = cv2.imdecode(np.frombuffer(img1_bytes, np.uint8), cv2.IMREAD_COLOR)
+    img2 = cv2.imdecode(np.frombuffer(img2_bytes, np.uint8), cv2.IMREAD_COLOR)
+
+    st.image(img1, caption="Image 1")
+    st.image(img2, caption="Image 2")
+
+    # Run change detection
+    result = change_detection(img1, img2)
+
+    # Display result
+    st.image(result, caption="Change Detection Result")
+
 # Add test example button
 if st.button("Test Example"):
     # Load sample images
@@ -81,23 +98,6 @@ if st.button("Test Example"):
     # Display sample images
     st.image(img1, caption="Sample Image 1")
     st.image(img2, caption="Sample Image 2")
-
-    # Run change detection
-    result = change_detection(img1, img2)
-
-    # Display result
-    st.image(result, caption="Change Detection Result")
-
-# Display images
-if img1 and img2:
-    img1_bytes = img1.read()
-    img2_bytes = img2.read()
-
-    img1 = cv2.imdecode(np.frombuffer(img1_bytes, np.uint8), cv2.IMREAD_COLOR)
-    img2 = cv2.imdecode(np.frombuffer(img2_bytes, np.uint8), cv2.IMREAD_COLOR)
-
-    st.image(img1, caption="Image 1")
-    st.image(img2, caption="Image 2")
 
     # Run change detection
     result = change_detection(img1, img2)
