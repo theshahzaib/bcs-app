@@ -69,6 +69,25 @@ st.title("Construction Stages Monitoring")
 img1 = st.file_uploader("Upload Before Image", type=["jpg", "png", "tif"], help='Upload image files equal in dimentions')
 img2 = st.file_uploader("Upload After Image", type=["jpg", "png", "tif"])
 
+# Add test example button
+if st.button("Test Example"):
+    # Load sample images
+    img1 = cv2.imread("samples/sample_before.jpg")
+    img2 = cv2.imread("samples/sample_after.jpg")
+
+    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+
+    # Display sample images
+    st.image(img1, caption="Sample Image 1")
+    st.image(img2, caption="Sample Image 2")
+
+    # Run change detection
+    result = change_detection(img1, img2)
+
+    # Display result
+    st.image(result, caption="Change Detection Result")
+
 # Display images
 if img1 and img2:
     img1_bytes = img1.read()
