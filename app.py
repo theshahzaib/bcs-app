@@ -63,7 +63,8 @@ def change_detection(img1, img2):
         return diff
 
 # Create main interface
-st.title("Construction Stages Monitoring")
+# st.title("Construction Stages Monitoring")
+st.title("Change Detection")
 
 # Upload images
 img1 = st.file_uploader("Upload Before Image", type=["jpg", "png", "tif"], help='Upload image files equal in dimentions')
