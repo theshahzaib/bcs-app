@@ -2,12 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 
-# # Set the title and favicon that appear in the Browser's tab bar.
-# st.set_page_config(
-#     page_title='Application',
-#     page_icon=':earth:', # This is an emoji shortcode. Could be a URL too.
-# )
-
+# Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
     page_title="Application",
     page_icon="🧊",
@@ -24,7 +19,7 @@ st.sidebar.image("CVNLP-Lab-Logo.png", width=250)
 # Create sidebar
 st.sidebar.title("More Settings")
 
-algorithm = st.sidebar.selectbox("Algorithm", ["AbsDiff", "Canny Edge Detection", "Thresholding"])
+algorithm = st.sidebar.selectbox("Algorithm", ["(Model-1) AbsDiff", "(Model-2) Canny Edge Detection", "(Model-3) Thresholding"])
 
 # Add threshold slider
 threshold = st.sidebar.slider("Threshold", 0, 255, 25)
