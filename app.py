@@ -15,8 +15,7 @@ threshold = st.sidebar.slider("Threshold", 0, 255, 25)
 
 # Add blur checkbox
 blur = st.sidebar.checkbox("Apply Blur")
-poly = st.sidebar.checkbox("Apply Polygons")
-
+# poly = st.sidebar.checkbox("Apply Polygons")
 
 
 def change_detection(img1, img2):
@@ -73,14 +72,14 @@ img2 = st.file_uploader("Upload After Image", type=["jpg", "png", "tif"])
 # Display images
 if img1 and img2:
 
-    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
-    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
-
     img1_bytes = img1.read()
     img2_bytes = img2.read()
 
     img1 = cv2.imdecode(np.frombuffer(img1_bytes, np.uint8), cv2.IMREAD_COLOR)
     img2 = cv2.imdecode(np.frombuffer(img2_bytes, np.uint8), cv2.IMREAD_COLOR)
+
+    img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+    img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
 
     st.image(img1, caption="Image 1")
     st.image(img2, caption="Image 2")
@@ -91,9 +90,19 @@ if img1 and img2:
     # Display result
     st.image(result, caption="Change Detection Result")
 
-# Add test example button
-if st.button("Test Example"):
-    # Load sample images
+
+## Test Sample Preuploaded Images
+
+if 'clicked' not in st.session_state:
+    st.session_state.clicked = False
+
+def click_button():
+    st.session_state.clicked = True
+
+st.button("Test Example", type="primary", on_click=click_button)
+
+if st.session_state.clicked:
+    # The message and nested widget will remain on the page
     img1 = cv2.imread("samples/sample_before.jpg")
     img2 = cv2.imread("samples/sample_after.jpg")
 
@@ -109,6 +118,18 @@ if st.button("Test Example"):
 
     # Display result
     st.image(result, caption="Change Detection Result")
+
+    # st.write('Button clicked!')
+    # st.slider('Select a value')
+
+# Create a clear dashboard button
+if st.sidebar.button("Clear Dashboard"):
+    # Clear session state
+    for key in st.session_state.keys():
+        del st.session_state[key]
+
+    # Reload the app
+    st.experimental_rerun()
 
 # Add copyright notice to footer
 st.markdown("Copyright (c) 2024 CENTAIC. All rights reserved. 🚀 Designed by Shahzaib 🔥")
