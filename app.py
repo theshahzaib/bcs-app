@@ -2,6 +2,22 @@ import streamlit as st
 import cv2
 import numpy as np
 
+# # Set the title and favicon that appear in the Browser's tab bar.
+# st.set_page_config(
+#     page_title='Application',
+#     page_icon=':earth:', # This is an emoji shortcode. Could be a URL too.
+# )
+
+st.set_page_config(
+    page_title="Application",
+    page_icon="🧊",
+    # layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': "🚀 Designed by Shahzaib 🔥"
+    }
+)
+
 # Add company logo to sidebar
 st.sidebar.image("CVNLP-Lab-Logo.png", width=250)
 
@@ -135,3 +151,4 @@ if st.sidebar.button("Clear Dashboard"):
 
 # Add copyright notice to footer
 st.markdown("Copyright ©️ 2024 CENTAIC. All rights reserved. 🚀 Designed by Shahzaib 🔥")
+
