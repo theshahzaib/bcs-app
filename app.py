@@ -19,7 +19,7 @@ st.sidebar.image("CVNLP-Lab-Logo.png", width=250)
 # Create sidebar
 st.sidebar.title("More Settings")
 
-algorithm = st.sidebar.selectbox("Algorithm", ["(Model-1) AbsDiff", "(Model-2) Canny Edge Detection", "(Model-3) Thresholding"])
+algorithm = st.sidebar.selectbox("Algorithm", ["AbsDiff", "Canny Edge Detection", "Thresholding"])
 
 # Add threshold slider
 threshold = st.sidebar.slider("Threshold", 0, 255, 25)
