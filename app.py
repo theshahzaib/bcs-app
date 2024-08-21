@@ -70,6 +70,9 @@ st.title("Change Detection")
 img1 = st.file_uploader("Upload Before Image", type=["jpg", "png", "tif"], help='Upload image files equal in dimentions')
 img2 = st.file_uploader("Upload After Image", type=["jpg", "png", "tif"])
 
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
+img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+
 # Display images
 if img1 and img2:
     img1_bytes = img1.read()
