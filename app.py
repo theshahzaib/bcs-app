@@ -122,6 +122,8 @@ if st.session_state.clicked:
     # st.write('Button clicked!')
     # st.slider('Select a value')
 
+st.sidebar.markdown("---")
+
 # Create a clear dashboard button
 if st.sidebar.button("Clear Dashboard"):
     # Clear session state
@@ -129,7 +131,7 @@ if st.sidebar.button("Clear Dashboard"):
         del st.session_state[key]
 
     # Reload the app
-    st.experimental_rerun()
+    st.rerun()
 
 # Add copyright notice to footer
-st.markdown("Copyright (c) 2024 CENTAIC. All rights reserved. 🚀 Designed by Shahzaib 🔥")
+st.markdown("Copyright ©️ 2024 CENTAIC. All rights reserved. 🚀 Designed by Shahzaib 🔥")
